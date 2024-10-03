@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="小白鼠">
+	<title>Notice</title>
+</head>
+<body>
+	<span id="span1" class="span1">000</span>
+	<script>
+		const searchParams = new URLSearchParams(window.location.search);
+		document.getElementById("span1").innerHTML = decodeURI(searchParams.get('info'));
+	</script>
+</body>
+</html>
