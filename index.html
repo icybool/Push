@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-	<meta charset="UTF-8">
-	<meta name="author" content="小白鼠">
-	<title>Notice</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="小白鼠">
+    <title>Notice</title>
 </head>
 <body>
-	<span id="span1" class="span1">000</span>
-	<script>
-		const searchParams = new URLSearchParams(window.location.search);
-		document.getElementById("span1").innerHTML = decodeURI(searchParams.get('info'));
-	</script>
+    <div id="data"></div>
+    <script>
+        const getSearchParams = (url) => {
+            const searchIndex = url.indexOf('?');
+            const searchParamsArray = url.slice(searchIndex + 1).split('&')
+            return searchParamsArray.reduce((pre, cur) => {
+                const [key, value] = cur.split('=');
+                return {
+                    ...pre,
+                    [key]: decodeURIComponent(value),
+                };
+            }, {});
+        };
+        var params = getSearchParams(window.location.href);
+        document.getElementById("data").innerHTML = params['info'];
+    </script>
 </body>
 </html>
