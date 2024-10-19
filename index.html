@@ -8,6 +8,7 @@
 <body>
     <div id="data"></div>
     <script>
+        'use strict';
         const getSearchParams = (url) => {
             const searchIndex = url.indexOf('?');
             const searchParamsArray = url.slice(searchIndex + 1).split('&')
@@ -19,8 +20,11 @@
                 };
             }, {});
         };
-        var params = getSearchParams(window.location.href);
-        document.getElementById("data").innerHTML = params['info'];
+        let params = getSearchParams(window.location.href);
+        document.getElementById('data').innerHTML = params['info'];
+        let title = params['title'];
+        title = (title == undefined) ? 'Notice' : title;
+        document.getElementsByTagName('title')[0].innerHTML = (title == '') ? '\u200E' : title;
     </script>
 </body>
 </html>
